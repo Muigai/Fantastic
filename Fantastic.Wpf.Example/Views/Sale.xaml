@@ -1,0 +1,136 @@
+﻿<Window x:Class="Fantastic.Wpf.Example.Views.SaleWindow"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+           xmlns:cornerstone="clr-namespace:Fantastic.Wpf;assembly=Fantastic.Wpf"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+           Width="900" Height="650" 
+           Title="Sale">
+    <DockPanel LastChildFill="True">
+        <StackPanel DockPanel.Dock="Top">
+            <!-- GroupBox Header="Sale Information" -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <TextBlock>Sale Date</TextBlock>
+                <TextBlock Grid.Row="1">Branch</TextBlock>
+                <TextBlock Grid.Row="2">Salesman</TextBlock>
+                <TextBlock Grid.Row="3">Customer</TextBlock>
+                <TextBlock Grid.Row="4" >_</TextBlock>
+                <TextBlock Grid.Row="5" >Vat Amount</TextBlock>
+                <TextBlock Grid.Row="6">Gross Amount</TextBlock>
+                <TextBlock Grid.Row="7">Total Amount</TextBlock>
+
+                <DatePicker x:Name="SaleDate" Grid.Column="1" Margin=" 0 0 10 0"/>
+
+                <ComboBox  x:Name="Branch" Grid.Column="1" Grid.Row="1" Margin=" 0 0 10 0" />
+
+                <ComboBox  x:Name="Salesperson" Grid.Column="1" Grid.Row="2" Margin=" 0 0 10 0" />
+
+                <ComboBox  x:Name="Customer" Grid.Column="1"  Grid.Row="3" Margin=" 0 0 10 0"/>
+
+                <TextBlock x:Name="VatAmount" Grid.Column="1" Grid.Row="5" Margin=" 0 0 10 0" />
+
+                <TextBlock x:Name="GrossAmount" Grid.Column="1"  Grid.Row="6" Margin=" 0 0 10 0" />
+
+                <TextBlock x:Name="TotalAmount" Grid.Column="1"  Grid.Row="7" Margin=" 0 0 10 0" />
+
+            </Grid>
+        </StackPanel>
+
+        <Button Style="{StaticResource MaterialDesignFloatingActionLightButton}" 
+                DockPanel.Dock="Bottom" 
+                HorizontalAlignment="Right"
+                Margin="5 5 5 5 "
+                x:Name="AddSaleDetail">
+            <materialDesign:PackIcon Kind="Plus"/>
+        </Button>
+        
+        <DataGrid x:Name="SaleDetails"
+                                   AutoGenerateColumns="False" 
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch"
+                                   DockPanel.Dock="Bottom">
+
+            <DataGrid.Columns >
+
+                <DataGridTemplateColumn Header="Product"  cornerstone:SortingClipboard.SortAndClipboardPath="Product.Name" Width="2.5*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock x:Name="Product_Name" Loaded="WireUp"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox x:Name="Product" Loaded="WireUp"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Quantity" Width="0.75*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock x:Name="Quantity" Loaded="WireUp"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox x:Name="Quantity" Loaded="WireUp"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Sale Price" Width="1*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock x:Name="SalePrice" Loaded="WireUp"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBlock x:Name="SalePrice" Loaded="WireUp"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Total Amount" Width="1*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock x:Name="TotalAmount" Loaded="WireUp"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBlock x:Name="TotalAmount" Loaded="WireUp"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+
+
+    </DockPanel>
+
+</Window>
