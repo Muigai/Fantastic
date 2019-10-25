@@ -1,2 +1,2 @@
 # Fantastic
-Family of Fantastic projects for WPF and Xamarin developments
+Family of Fantastic projects for WPF and Xamarin development
